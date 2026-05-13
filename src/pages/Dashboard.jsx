@@ -3,6 +3,7 @@ import { getMyLinks, getEarnings, generateLink } from '../services/api';
 import InfluencerProfile from './InfluencerProfile';
 import BrandDashboard from './BrandDashboard';
 import Campaigns from './Campaigns';
+import Portfolio from './Portfolio';
 
 export default function Dashboard({ user, onLogout }) {
   const [links,    setLinks]    = useState([]);
@@ -47,6 +48,7 @@ export default function Dashboard({ user, onLogout }) {
   };
 
   if (page === 'profile')   return <InfluencerProfile onBack={() => setPage('home')} />;
+  if (page === 'portfolio')  return <Portfolio onBack={() => setPage('home')} />;
   if (page === 'brand')     return <BrandDashboard onBack={() => setPage('home')} />;
   if (page === 'campaigns') return <Campaigns onBack={() => setPage('home')} />;
 
@@ -90,6 +92,10 @@ export default function Dashboard({ user, onLogout }) {
         <button style={S.actionBtn} onClick={() => setPage('profile')}>
           <span style={{fontSize:'24px'}}>👤</span>
           <span>Build Profile</span>
+        </button>
+        <button style={S.actionBtn} onClick={() => setPage('portfolio')}>
+          <span style={{fontSize:'24px'}}>🖼️</span>
+          <span>My Portfolio</span>
         </button>
         <button style={S.actionBtn} onClick={() => setPage('campaigns')}>
           <span style={{fontSize:'24px'}}>📢</span>
